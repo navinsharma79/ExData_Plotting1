@@ -31,7 +31,9 @@ data_filtered <- data[Date %in% as.Date(c("2007-02-01", "2007-02-02")), ]
 data_filtered$Global_active_power <- as.numeric(data_filtered$Global_active_power)
 
 
+par(mfrow=c(1,1))
 with(data_filtered,hist(Global_active_power,col="red",main = "Global Active Power",xlab="Global Active Power (kilowatts)"))
 
-dev.copy(png,file="plot1.png")
+png(file="plot1.png")
+with(data_filtered,hist(Global_active_power,col="red",main = "Global Active Power",xlab="Global Active Power (kilowatts)"))
 dev.off()

@@ -43,11 +43,21 @@ with(data_filtered, {
   plot(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Sub_metering_1,type="l",ylab="Energy sub metering",xlab="")
   lines(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Sub_metering_2,type="l",col="red")
   lines(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Sub_metering_3,type="l",col="blue")
-  legend("topright",col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),lwd=1,lty=1,y.intersp=1,x.intersp=1,bty = "n")
+  legend("topright",col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),lwd=1,lty=1,bty = "n",cex=1)
   plot(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Global_reactive_power,type="l",ylab="global_reactive_power",xlab="datetime")
   
 })
 
-
-dev.copy(png,file="plot4.png")
+png(file="plot4.png")
+par(mfrow=c(2,2))
+with(data_filtered, {
+  plot(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Global_active_power,type="l",ylab="Global Active Power",xlab="")
+  plot(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Voltage,type="l",ylab="Voltage",xlab="datetime")
+  plot(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Sub_metering_1,type="l",ylab="Energy sub metering",xlab="")
+  lines(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Sub_metering_2,type="l",col="red")
+  lines(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Sub_metering_3,type="l",col="blue")
+  legend("topright",col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),lwd=1,lty=1,bty = "n",cex=1)
+  plot(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Global_reactive_power,type="l",ylab="global_reactive_power",xlab="datetime")
+  
+})
 dev.off()

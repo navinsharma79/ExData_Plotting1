@@ -33,7 +33,9 @@ data_filtered$Global_active_power <- as.numeric(data_filtered$Global_active_powe
 
 # plot
 # combine the date and time into one value for x axis
+par(mfrow=c(1,1))
 with(data_filtered,plot(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Global_active_power,type="l",ylab="Global Active Power (kilowatts)",xlab=""))
 
-dev.copy(png,file="plot2.png")
+png(file="plot2.png")
+with(data_filtered,plot(strptime(paste(data_filtered$Date,data_filtered$Time),"%Y-%m-%d %H:%M:%S"),Global_active_power,type="l",ylab="Global Active Power (kilowatts)",xlab=""))
 dev.off()
